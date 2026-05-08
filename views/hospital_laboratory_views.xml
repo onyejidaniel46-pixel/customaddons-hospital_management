@@ -1,0 +1,49 @@
+<odoo>
+    <!-- Tree view -->
+    <record id="view_hospital_laboratory_tree" model="ir.ui.view">
+        <field name="name">hospital.laboratory.tree</field>
+        <field name="model">hospital.laboratory</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="test_type"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="result"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view -->
+    <record id="view_hospital_laboratory_form" model="ir.ui.view">
+        <field name="name">hospital.laboratory.form</field>
+        <field name="model">hospital.laboratory</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Laboratory Test Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Test Information">
+                            <field name="test_type"/>
+                            <field name="result"/>
+                            <field name="patient_id"/>
+                        </group>
+                    </group>
+                    
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_hospital_laboratory" model="ir.actions.act_window">
+        <field name="name">Laboratory Tests</field>
+        <field name="res_model">hospital.laboratory</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    </odoo>

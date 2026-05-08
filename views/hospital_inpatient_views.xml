@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- INSTITUTION -->
+    <record id="view_hospital_institution_tree" model="ir.ui.view">
+        <field name="name">hospital.institution.tree</field>
+        <field name="model">hospital.institution</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_institution_form" model="ir.ui.view">
+        <field name="name">hospital.institution.form</field>
+        <field name="model">hospital.institution</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="phone"/>
+                        <field name="email"/>
+                        <field name="address"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_institution" model="ir.actions.act_window">
+        <field name="name">Health Centers</field>
+        <field name="res_model">hospital.institution</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- BUILDING -->
+    <record id="view_hospital_building_tree" model="ir.ui.view">
+        <field name="name">hospital.building.tree</field>
+        <field name="model">hospital.building</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="institution_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_building_form" model="ir.ui.view">
+        <field name="name">hospital.building.form</field>
+        <field name="model">hospital.building</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="institution_id"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_building" model="ir.actions.act_window">
+        <field name="name">Buildings</field>
+        <field name="res_model">hospital.building</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- UNIT -->
+    <record id="view_hospital_unit_tree" model="ir.ui.view">
+        <field name="name">hospital.unit.tree</field>
+        <field name="model">hospital.unit</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="institution_id"/>
+                <field name="building_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_unit_form" model="ir.ui.view">
+        <field name="name">hospital.unit.form</field>
+        <field name="model">hospital.unit</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="institution_id"/>
+                        <field name="building_id"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_unit" model="ir.actions.act_window">
+        <field name="name">Units</field>
+        <field name="res_model">hospital.unit</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- WARD -->
+    <record id="view_hospital_ward_tree" model="ir.ui.view">
+        <field name="name">hospital.ward.tree</field>
+        <field name="model">hospital.ward</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="building_id"/>
+                <field name="capacity"/>
+                <field name="gender"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_ward_form" model="ir.ui.view">
+        <field name="name">hospital.ward.form</field>
+        <field name="model">hospital.ward</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="Ward Information">
+                            <field name="name"/>
+                            <field name="building_id"/>
+                            <field name="unit_id"/>
+                            <field name="capacity"/>
+                            <field name="gender"/>
+                        </group>
+                        <group string="Facilities">
+                            <field name="has_ac"/>
+                            <field name="has_tv"/>
+                            <field name="has_internet"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Beds">
+                            <field name="bed_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="bed_type"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <group>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_ward" model="ir.actions.act_window">
+        <field name="name">Wards</field>
+        <field name="res_model">hospital.ward</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- BED -->
+    <record id="view_hospital_bed_tree" model="ir.ui.view">
+        <field name="name">hospital.bed.tree</field>
+        <field name="model">hospital.bed</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="ward_id"/>
+                <field name="bed_type"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_bed_form" model="ir.ui.view">
+        <field name="name">hospital.bed.form</field>
+        <field name="model">hospital.bed</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="ward_id"/>
+                        <field name="bed_type"/>
+                        <field name="state"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_bed" model="ir.actions.act_window">
+        <field name="name">Beds</field>
+        <field name="res_model">hospital.bed</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- INPATIENT -->
+    <record id="view_hospital_inpatient_tree" model="ir.ui.view">
+        <field name="name">hospital.inpatient.tree</field>
+        <field name="model">hospital.inpatient</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="bed_id"/>
+                <field name="ward_id"/>
+                <field name="admission_date"/>
+                <field name="admission_type"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_inpatient_form" model="ir.ui.view">
+        <field name="name">hospital.inpatient.form</field>
+        <field name="model">hospital.inpatient</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" string="Confirm Registration" type="object"
+                        states="free" class="oe_highlight"/>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="free,confirmed,admitted"/>
+                </header>
+                <sheet>
+                    <h2>Administrative Data</h2>
+                    <group>
+                        <group>
+                            <field name="name" string="Registration Code" readonly="1"/>
+                            <field name="patient_id"/>
+                            <field name="bed_id" string="Hospital Bed"/>
+                            <field name="admission_date" string="Hospitalization date"/>
+                            <field name="discharge_date" string="Discharge date"/>
+                            <field name="extra_info"/>
+                        </group>
+                        <group>
+                            <field name="attending_physician_id"/>
+                            <field name="operating_physician_id"/>
+                            <field name="admission_type"/>
+                            <field name="reason"/>
+                            <field name="ward_id" string="Ward"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Transfer Bed">
+                            <tree>
+                                <field name="transfer_date" string="Date"/>
+                                <field name="transfer_from" string="From"/>
+                                <field name="transfer_to" string="To"/>
+                            </tree>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_inpatient" model="ir.actions.act_window">
+        <field name="name">Patient Hospitalization</field>
+        <field name="res_model">hospital.inpatient</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ICU -->
+    <record id="view_hospital_icu_tree" model="ir.ui.view">
+        <field name="name">hospital.icu.tree</field>
+        <field name="model">hospital.icu</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="patient_id"/>
+                <field name="inpatient_id"/>
+                <field name="physician_id"/>
+                <field name="date"/>
+                <field name="apache_score"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_icu_form" model="ir.ui.view">
+        <field name="name">hospital.icu.form</field>
+        <field name="model">hospital.icu</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="Patient">
+                            <field name="inpatient_id"/>
+                            <field name="patient_id" readonly="1"/>
+                            <field name="physician_id"/>
+                            <field name="date"/>
+                        </group>
+                        <group string="APACHE II Score">
+                            <field name="age_score"/>
+                            <field name="glasgow_coma_score"/>
+                            <field name="apache_score" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Vital Signs">
+                        <group>
+                            <field name="temperature"/>
+                            <field name="mean_arterial_pressure"/>
+                            <field name="heart_rate"/>
+                            <field name="respiratory_rate"/>
+                        </group>
+                        <group>
+                            <field name="fio2"/>
+                            <field name="ph"/>
+                            <field name="sodium"/>
+                            <field name="potassium"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_icu" model="ir.actions.act_window">
+        <field name="name">Patient ICU Info</field>
+        <field name="res_model">hospital.icu</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ECG -->
+    <record id="view_hospital_ecg_tree" model="ir.ui.view">
+        <field name="name">hospital.ecg.tree</field>
+        <field name="model">hospital.ecg</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="patient_id"/>
+                <field name="physician_id"/>
+                <field name="date"/>
+                <field name="heart_rate"/>
+                <field name="rhythm"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_ecg_form" model="ir.ui.view">
+        <field name="name">hospital.ecg.form</field>
+        <field name="model">hospital.ecg</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="inpatient_id"/>
+                        <field name="physician_id"/>
+                        <field name="date"/>
+                        <field name="heart_rate"/>
+                        <field name="rhythm"/>
+                        <field name="interpretation"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_ecg" model="ir.actions.act_window">
+        <field name="name">ECG</field>
+        <field name="res_model">hospital.ecg</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- GCS -->
+    <record id="view_hospital_gcs_tree" model="ir.ui.view">
+        <field name="name">hospital.gcs.tree</field>
+        <field name="model">hospital.gcs</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="patient_id"/>
+                <field name="physician_id"/>
+                <field name="date"/>
+                <field name="gcs_total"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_gcs_form" model="ir.ui.view">
+        <field name="name">hospital.gcs.form</field>
+        <field name="model">hospital.gcs</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="Patient">
+                            <field name="patient_id"/>
+                            <field name="inpatient_id"/>
+                            <field name="physician_id"/>
+                            <field name="date"/>
+                        </group>
+                        <group string="GCS Score">
+                            <field name="eye_opening"/>
+                            <field name="verbal_response"/>
+                            <field name="motor_response"/>
+                            <field name="gcs_total" readonly="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_gcs" model="ir.actions.act_window">
+        <field name="name">GCS</field>
+        <field name="res_model">hospital.gcs</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

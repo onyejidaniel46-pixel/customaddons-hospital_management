@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree view -->
+    <record id="reports_daily_tree_view" model="ir.ui.view">
+        <field name="name">reports.daily.tree</field>
+        <field name="model">reports.daily</field>
+        <field name="arch" type="xml">
+            <tree string="Daily Reports">
+                <field name="report_date"/>
+                <field name="total_patients"/>
+                <field name="total_revenue"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view -->
+    <record id="reports_daily_form_view" model="ir.ui.view">
+        <field name="name">reports.daily.form</field>
+        <field name="model">reports.daily</field>
+        <field name="arch" type="xml">
+            <form string="Daily Report">
+                <sheet>
+                    <group>
+                        <field name="report_date"/>
+                        <field name="total_patients"/>
+                        <field name="total_revenue"/>
+                    </group>
+                    <notebook>
+                        <page string="Appointments">
+                            <field name="appointment_ids">
+                                <tree>
+                                    <field name="patient_id"/>
+                                    <field name="doctor_id"/>
+                                    <field name="date"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_reports_daily" model="ir.actions.act_window">
+        <field name="name">Daily Reports</field>
+        <field name="res_model">reports.daily</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

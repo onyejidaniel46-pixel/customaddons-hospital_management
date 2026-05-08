@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Nursing Tree view -->
+    <record id="view_hospital_nursing_tree" model="ir.ui.view">
+        <field name="name">hospital.nursing.tree</field>
+        <field name="model">hospital.nursing</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="department"/>
+                <field name="shift"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Nursing Form view -->
+    <record id="view_hospital_nursing_form" model="ir.ui.view">
+        <field name="name">hospital.nursing.form</field>
+        <field name="model">hospital.nursing</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="department"/>
+                            <field name="shift"/>
+                        </group>
+                        <group>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Nursing Action -->
+    <record id="action_hospital_nursing" model="ir.actions.act_window">
+        <field name="name">Nursing</field>
+        <field name="res_model">hospital.nursing</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

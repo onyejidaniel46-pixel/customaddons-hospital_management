@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="demo_patient_1" model="hospital.patient">
+        <field name="ref">P/0001</field>
+        <field name="name">Alice Johnson</field>
+        <field name="dob">1985-07-12</field>
+        <field name="age">40</field>
+        <field name="gender">female</field>
+        <field name="phone">+1-555-0100</field>
+        <field name="email">alice@example.com</field>
+    </record>
+
+    <record id="demo_patient_2" model="hospital.patient">
+        <field name="ref">P/0002</field>
+        <field name="name">Bob Smith</field>
+         <field name="dob">1978-03-04</field>
+        <field name="age">47</field>
+        <field name="gender">male</field>
+        <field name="phone">+1-555-0101</field>
+        <field name="email">bob@example.com</field>
+        <field name="doctor_id" ref="demo_doctor_1"/>
+    </record>
+
+    <!-- Real Doctors -->
+    <record id="demo_doctor_1" model="hospital.doctor">
+        <field name="name">Dr. James Wilson</field>
+        <field name="specialty">Cardiology</field>
+    </record>
+
+    <record id="demo_doctor_2" model="hospital.doctor">
+        <field name="name">Dr. Sarah Johnson</field>
+        <field name="specialty">Neurology</field>
+    </record>
+
+    <record id="demo_doctor_3" model="hospital.doctor">
+        <field name="name">Dr. Michael Brown</field>
+        <field name="specialty">Orthopedics</field>
+    </record>
+
+    <record id="demo_doctor_4" model="hospital.doctor">
+        <field name="name">Dr. Emily Davis</field>
+        <field name="specialty">Pediatrics</field>
+    </record>
+
+    <record id="demo_doctor_5" model="hospital.doctor">
+        <field name="name">Dr. Robert Miller</field>
+        <field name="specialty">General Surgery</field>
+    </record>
+</odoo>

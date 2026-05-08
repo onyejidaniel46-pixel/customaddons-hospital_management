@@ -1,0 +1,44 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_billing_tree" model="ir.ui.view">
+        <field name="name">hospital.billing.tree</field>
+        <field name="model">hospital.billing</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="patient_id"/>
+                <field name="appointment_id"/>
+                <field name="amount"/>
+                <field name="date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_billing_form" model="ir.ui.view">
+        <field name="name">hospital.billing.form</field>
+        <field name="model">hospital.billing</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="appointment_id"/>
+                        <field name="amount"/>
+                        <field name="date"/>
+                        <field name="state"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_billing" model="ir.actions.act_window">
+        <field name="name">Billing</field>
+        <field name="res_model">hospital.billing</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+</odoo>

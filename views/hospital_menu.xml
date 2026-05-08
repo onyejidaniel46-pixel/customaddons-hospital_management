@@ -1,0 +1,258 @@
+<odoo>
+
+    <!-- Top-level menu -->
+    <menuitem id="hospital_management_menu"
+            name="Hospital Management"
+            sequence="10"/>
+
+    <!-- Patients -->
+    <menuitem id="menu_patients_root"
+            name="Patients"
+            parent="hospital_management_menu"
+            sequence="1"/>
+
+    <menuitem id="menu_hospital_patient"
+            name="Patient Records"
+            parent="menu_patients_root"
+            action="action_hospital_patient"
+            sequence="1"/>
+
+    <menuitem id="menu_hospital_appointment"
+            name="Appointments"
+            parent="menu_patients_root"
+            action="action_hospital_appointment"
+            sequence="1"/>
+
+    <menuitem id="menu_hospital_prescription"
+            name="Prescriptions"
+            parent="menu_patients_root"
+            action="action_prescription"
+            sequence="2"/>
+
+    <menuitem id="menu_hospital_imaging"
+            name="Imaging"
+            parent="menu_patients_root"
+            action="action_hospital_imaging"
+            sequence="3"/>
+
+    <menuitem id="menu_hospital_laboratory"
+            name="Laboratory"
+            parent="menu_patients_root"
+            action="action_hospital_laboratory"
+            sequence="4"/>
+
+    <menuitem id="menu_hospital_surgery"
+            name="Surgery"
+            parent="menu_patients_root"
+            action="action_hospital_surgery"
+            sequence="5"/>
+
+    <menuitem id="menu_hospital_vaccination"
+            name="Pediatrics"
+            parent="menu_patients_root"
+            action="action_hospital_vaccination"
+            sequence="6"/>
+
+    <menuitem id="menu_hospital_disease"
+            name="Diseases"
+            parent="menu_patients_root"
+            action="action_hospital_disease"
+            sequence="7"/>
+
+    <!-- Inpatient Administration -->
+    <menuitem id="menu_inpatient_root"
+            name="Inpatient Administration"
+            parent="hospital_management_menu"
+            sequence="2"/>
+
+    <menuitem id="menu_hospital_inpatient"
+            name="Patient Hospitalization"
+            parent="menu_inpatient_root"
+            action="action_hospital_inpatient"
+            sequence="1"/>
+
+    <menuitem id="menu_hospital_icu"
+            name="Patient ICU Info"
+            parent="menu_inpatient_root"
+            action="action_hospital_icu"
+            sequence="2"/>
+
+    <menuitem id="menu_hospital_ecg"
+            name="ECG"
+            parent="menu_inpatient_root"
+            action="action_hospital_ecg"
+            sequence="3"/>
+
+    <menuitem id="menu_hospital_gcs"
+            name="GCS"
+            parent="menu_inpatient_root"
+            action="action_hospital_gcs"
+            sequence="4"/>
+
+    <!-- Pharmacy -->
+    <menuitem id="menu_pharmacy_root"
+            name="Pharmacy"
+            parent="hospital_management_menu"
+            sequence="3"/>
+
+    <menuitem id="menu_hospital_medication"
+            name="Medications"
+            parent="menu_pharmacy_root"
+            action="action_hospital_medication"
+            sequence="1"/>
+
+    <menuitem id="menu_hospital_prescription_pharmacy"
+            name="Prescriptions"
+            parent="menu_pharmacy_root"
+            action="action_prescription"
+            sequence="2"/>
+
+    <menuitem id="menu_blood_bank_root"
+            name="Blood Bank"
+            parent="menu_pharmacy_root"
+            sequence="3"/>
+
+    <menuitem id="menu_hospital_blood_donation"
+            name="Blood Donations"
+            parent="menu_blood_bank_root"
+            action="action_hospital_blood_donation"
+            sequence="1"/>
+
+    <!-- Clinical Services -->
+    <menuitem id="menu_clinical_root"
+            name="Clinical Services"
+            parent="hospital_management_menu"
+            sequence="4"/>
+
+    <menuitem id="menu_hospital_imaging_clinical"
+            name="Imaging"
+            parent="menu_clinical_root"
+            action="action_hospital_imaging"
+            sequence="1"/>
+
+    <menuitem id="menu_hospital_laboratory_clinical"
+            name="Laboratory"
+            parent="menu_clinical_root"
+            action="action_hospital_laboratory"
+            sequence="2"/>
+
+    <menuitem id="menu_hospital_surgery_clinical"
+            name="Surgery"
+            parent="menu_clinical_root"
+            action="action_hospital_surgery"
+            sequence="3"/>
+
+    <menuitem id="menu_hospital_ambulance"
+            name="Ambulance"
+            parent="menu_clinical_root"
+            action="action_hospital_ambulance"
+            sequence="4"/>
+
+    <menuitem id="menu_hospital_vaccination_clinical"
+            name="Pediatrics"
+            parent="menu_clinical_root"
+            action="action_hospital_vaccination"
+            sequence="5"/>
+
+    <menuitem id="menu_hospital_blood_donation_clinical"
+            name="Blood Donations"
+            parent="menu_clinical_root"
+            action="action_hospital_blood_donation"
+            sequence="6"/>
+
+    <!-- Finance -->
+    <menuitem id="menu_finance_root"
+            name="Finance"
+            parent="hospital_management_menu"
+            sequence="5"/>
+
+    <menuitem id="hospital_billing_menu"
+            name="Billing"
+            parent="menu_finance_root"
+            action="action_billing"
+            sequence="1"/>
+
+    <menuitem id="menu_hospital_insurance"
+            name="Insurance"
+            parent="menu_finance_root"
+            action="action_hospital_insurance"
+            sequence="2"/>
+
+    <menuitem id="menu_reports_root"
+            name="Reports"
+            parent="menu_finance_root"
+            sequence="3"/>
+
+    <menuitem id="menu_reports_daily"
+            name="Daily Reports"
+            parent="menu_reports_root"
+            action="action_reports_daily"
+            sequence="1"/>
+
+    <menuitem id="menu_appointment_report_wizard"
+            name="Appointment Filter"
+            parent="menu_reports_root"
+            action="action_appointment_report_wizard"
+            sequence="2"/>
+
+    <!-- HR Management -->
+    <menuitem id="menu_hr_management_root"
+            name="HR Management"
+            parent="hospital_management_menu"
+            sequence="6"/>
+
+    <menuitem id="menu_hospital_doctor_hr"
+            name="Doctors / Physicians"
+            parent="menu_hr_management_root"
+            action="action_hospital_doctor"
+            sequence="1"/>
+
+    <menuitem id="menu_nursing_root"
+            name="Nursing"
+            parent="menu_hr_management_root"
+            action="action_hospital_nursing"
+            sequence="3"/>
+
+    <menuitem id="menu_hospital_patient_evaluation"
+            name="Patient Evaluations"
+            parent="menu_hr_management_root"
+            action="action_hospital_patient_evaluation"
+            sequence="3"/>
+
+    <!-- Configuration -->
+    <menuitem id="menu_config_root"
+            name="Configuration"
+            parent="hospital_management_menu"
+            sequence="7"/>
+
+    <menuitem id="menu_hospital_institution"
+            name="Health Centers"
+            parent="menu_config_root"
+            action="action_hospital_institution"
+            sequence="1"/>
+
+    <menuitem id="menu_hospital_building"
+            name="Buildings"
+            parent="menu_config_root"
+            action="action_hospital_building"
+            sequence="2"/>
+
+    <menuitem id="menu_hospital_unit"
+            name="Units"
+            parent="menu_config_root"
+            action="action_hospital_unit"
+            sequence="3"/>
+
+    <menuitem id="menu_hospital_ward"
+            name="Wards"
+            parent="menu_config_root"
+            action="action_hospital_ward"
+            sequence="4"/>
+
+    <menuitem id="menu_hospital_bed"
+            name="Beds"
+            parent="menu_config_root"
+            action="action_hospital_bed"
+            sequence="5"/>
+
+</odoo>

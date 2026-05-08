@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- MEDICATION -->
+    <record id="view_hospital_medication_tree" model="ir.ui.view">
+        <field name="name">hospital.medication.tree</field>
+        <field name="model">hospital.medication</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="category"/>
+                <field name="dosage"/>
+                <field name="expiry_date"/>
+                <field name="safe_for_pregnant"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_medication_form" model="ir.ui.view">
+        <field name="name">hospital.medication.form</field>
+        <field name="model">hospital.medication</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Medicine Name"/></h1>
+                    </div>
+                    <group>
+                        <group string="Classification">
+                            <field name="category"/>
+                            <field name="therapeutic_effect"/>
+                            <field name="active_components"/>
+                        </group>
+                        <group string="Details">
+                            <field name="presentation"/>
+                            <field name="dosage"/>
+                            <field name="expiry_date"/>
+                            <field name="safe_for_pregnant"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Composition">
+                            <field name="composition"/>
+                        </group>
+                        <group string="Storage">
+                            <field name="storage_conditions"/>
+                        </group>
+                    </group>
+                    <group string="Adverse Reactions">
+                        <field name="adverse_reaction" nolabel="1"/>
+                    </group>
+                    <group string="Extra Information">
+                        <field name="notes" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_medication" model="ir.actions.act_window">
+        <field name="name">Medications</field>
+        <field name="res_model">hospital.medication</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- VACCINATION -->
+    <record id="view_hospital_vaccination_tree" model="ir.ui.view">
+        <field name="name">hospital.vaccination.tree</field>
+        <field name="model">hospital.vaccination</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="patient_id"/>
+                <field name="vaccine"/>
+                <field name="physician_id"/>
+                <field name="date"/>
+                <field name="next_dose_date"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_vaccination_form" model="ir.ui.view">
+        <field name="name">hospital.vaccination.form</field>
+        <field name="model">hospital.vaccination</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="vaccine"/>
+                        <field name="physician_id"/>
+                        <field name="date"/>
+                        <field name="next_dose_date"/>
+                        <field name="lot_number"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_vaccination" model="ir.actions.act_window">
+        <field name="name">Vaccinations</field>
+        <field name="res_model">hospital.vaccination</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- IMAGING -->
+    <record id="view_hospital_imaging_tree" model="ir.ui.view">
+        <field name="name">hospital.imaging.tree</field>
+        <field name="model">hospital.imaging</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="physician_id"/>
+                <field name="imaging_type"/>
+                <field name="body_part"/>
+                <field name="date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_imaging_form" model="ir.ui.view">
+        <field name="name">hospital.imaging.form</field>
+        <field name="model">hospital.imaging</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,in_progress,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Request Information">
+                            <field name="patient_id"/>
+                            <field name="physician_id"/>
+                            <field name="date"/>
+                        </group>
+                        <group string="Imaging Details">
+                            <field name="imaging_type"/>
+                            <field name="body_part"/>
+                        </group>
+                    </group>
+                    <group string="Result / Findings">
+                        <field name="result" nolabel="1"/>
+                    </group>
+                    <group string="Notes">
+                        <field name="notes" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_imaging" model="ir.actions.act_window">
+        <field name="name">Imaging</field>
+        <field name="res_model">hospital.imaging</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- SURGERY -->
+    <record id="view_hospital_surgery_tree" model="ir.ui.view">
+        <field name="name">hospital.surgery.tree</field>
+        <field name="model">hospital.surgery</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="surgeon_id"/>
+                <field name="date"/>
+                <field name="surgery_type"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_surgery_form" model="ir.ui.view">
+        <field name="name">hospital.surgery.form</field>
+        <field name="model">hospital.surgery</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="scheduled,in_progress,done,cancelled"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Surgery Information">
+                            <field name="patient_id"/>
+                            <field name="surgery_type"/>
+                            <field name="date"/>
+                        </group>
+                        <group string="Medical Team">
+                            <field name="surgeon_id"/>
+                            <field name="assistant_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <group string="Description">
+                        <field name="description" nolabel="1"/>
+                    </group>
+                    <group string="Result / Notes">
+                        <field name="result" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_surgery" model="ir.actions.act_window">
+        <field name="name">Surgery</field>
+        <field name="res_model">hospital.surgery</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- AMBULANCE -->
+    <record id="view_hospital_ambulance_tree" model="ir.ui.view">
+        <field name="name">hospital.ambulance.tree</field>
+        <field name="model">hospital.ambulance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="driver"/>
+                <field name="vehicle_number"/>
+                <field name="request_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_ambulance_form" model="ir.ui.view">
+        <field name="name">hospital.ambulance.form</field>
+        <field name="model">hospital.ambulance</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,dispatched,completed,cancelled"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group string="Request Details">
+                            <field name="patient_id"/>
+                            <field name="request_date"/>
+                            <field name="pickup_location"/>
+                            <field name="destination"/>
+                        </group>
+                        <group string="Vehicle Info">
+                            <field name="driver"/>
+                            <field name="vehicle_number"/>
+                        </group>
+                    </group>
+                    <group string="Notes">
+                        <field name="notes" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_ambulance" model="ir.actions.act_window">
+        <field name="name">Ambulance</field>
+        <field name="res_model">hospital.ambulance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- BLOOD DONATION -->
+    <record id="view_hospital_blood_donation_tree" model="ir.ui.view">
+        <field name="name">hospital.blood.donation.tree</field>
+        <field name="model">hospital.blood.donation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="donor_name"/>
+                <field name="blood_type"/>
+                <field name="donation_date"/>
+                <field name="units"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_blood_donation_form" model="ir.ui.view">
+        <field name="name">hospital.blood.donation.form</field>
+        <field name="model">hospital.blood.donation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <field name="donor_name"/>
+                        <field name="blood_type"/>
+                        <field name="donation_date"/>
+                        <field name="units"/>
+                        <field name="physician_id"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_blood_donation" model="ir.actions.act_window">
+        <field name="name">Blood Donations</field>
+        <field name="res_model">hospital.blood.donation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- INSURANCE -->
+    <record id="view_hospital_insurance_tree" model="ir.ui.view">
+        <field name="name">hospital.insurance.tree</field>
+        <field name="model">hospital.insurance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="patient_id"/>
+                <field name="insurer"/>
+                <field name="policy_number"/>
+                <field name="expiry_date"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_insurance_form" model="ir.ui.view">
+        <field name="name">hospital.insurance.form</field>
+        <field name="model">hospital.insurance</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="insurer"/>
+                        <field name="policy_number"/>
+                        <field name="expiry_date"/>
+                        <field name="coverage"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_insurance" model="ir.actions.act_window">
+        <field name="name">Insurance</field>
+        <field name="res_model">hospital.insurance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- DISEASE -->
+    <record id="view_hospital_disease_tree" model="ir.ui.view">
+        <field name="name">hospital.disease.tree</field>
+        <field name="model">hospital.disease</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="category"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_disease_form" model="ir.ui.view">
+        <field name="name">hospital.disease.form</field>
+        <field name="model">hospital.disease</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="category"/>
+                        <field name="code"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_disease" model="ir.actions.act_window">
+        <field name="name">Diseases</field>
+        <field name="res_model">hospital.disease</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- PATIENT EVALUATION -->
+    <record id="view_hospital_patient_evaluation_tree" model="ir.ui.view">
+        <field name="name">hospital.patient.evaluation.tree</field>
+        <field name="model">hospital.patient.evaluation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="patient_id"/>
+                <field name="physician_id"/>
+                <field name="date"/>
+                <field name="pulse_rate"/>
+                <field name="blood_pressure"/>
+                <field name="weight"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_hospital_patient_evaluation_form" model="ir.ui.view">
+        <field name="name">hospital.patient.evaluation.form</field>
+        <field name="model">hospital.patient.evaluation</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="Patient Info">
+                            <field name="patient_id"/>
+                            <field name="physician_id"/>
+                            <field name="date"/>
+                        </group>
+                        <group string="Vitals">
+                            <field name="pulse_rate"/>
+                            <field name="oxygen_rate"/>
+                            <field name="blood_pressure"/>
+                            <field name="weight"/>
+                            <field name="temperature"/>
+                        </group>
+                    </group>
+                    <group string="Chief Complaint">
+                        <field name="chief_complaint" nolabel="1"/>
+                    </group>
+                    <group string="Diagnosis">
+                        <field name="diagnosis" nolabel="1"/>
+                    </group>
+                    <group string="Notes">
+                        <field name="notes" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_hospital_patient_evaluation" model="ir.actions.act_window">
+        <field name="name">Patient Evaluations</field>
+        <field name="res_model">hospital.patient.evaluation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

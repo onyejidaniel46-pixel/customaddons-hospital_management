@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="action_report_patient"
+        model="hospital.patient"
+        string="Patient Report"
+        report_type="qweb-pdf"
+        name="hospital_management.report_patient_document"
+        file="hospital_management.report_patient_document"
+    />
+
+    <template id="report_patient_document">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <h2>Patient Report</h2>
+                <t t-esc="doc.name"/>
+            </div>
+        </t>
+    </template>
+</odoo>
